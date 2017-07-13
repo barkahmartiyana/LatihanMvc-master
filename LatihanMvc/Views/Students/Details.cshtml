@@ -1,0 +1,50 @@
+﻿@model LatihanMvc.Models.Student
+@{
+    ViewBag.Title = "Details";
+
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @Html.DisplayNameFor(model => model.LastName)
+        <br>
+        @Html.DisplayFor(model => model.LastName)
+        <br>
+        @Html.DisplayNameFor(model => model.FirstMidName)
+        <br>
+        @Html.DisplayFor(model => model.FirstMidName)
+        <br>
+        @Html.DisplayNameFor(model => model.EnrollmentDate)
+        <br>
+        @Html.DisplayFor(model => model.EnrollmentDate)
+        <br>
+        <p>Enrollments</p>
+        <table class="table">
+            <tr>
+                <th>Course Title</th>
+                <th>Grade</th>
+            </tr>
+            @foreach (var item in Model.Enrollments)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Grade)
+                    </td>
+                </tr>
+            }
+        </table>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID } ,new { @class = "btn btn-primary " }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info" })
+
+
+</p>
